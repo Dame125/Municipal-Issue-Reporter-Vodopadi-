@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Report an Issue Ohrid</title>
+    <link rel="shortcut icon" href="./Pictures/Vodopadi.png" type="image/x-icon">
+    <!-- Font Awesome & Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Styles/Style2.css">
+  </head>
+  <body>
+    <header class="header">
+      <h1><i class="fa-solid fa-user-shield"></i> Admin Panel</h1>
+      <a href="prijavi.html" style="color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Main Page
+      </a>
+    </header>
+
+    <div class="container">
+      <h2 class="page-title">Manage All Issues</h2>
+      <div class="admin-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title & Description</th>
+              <th>Category / Location</th>
+              <th>Votes</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text-muted);">
+                Loading issues...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="./JS/admin.js" type="module">
+     
+    </script>
+  </body>
+</html>

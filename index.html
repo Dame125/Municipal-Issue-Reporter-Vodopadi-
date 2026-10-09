@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="mk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report an Issue – Home</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Styles/style.css" />
+    <link rel="shortcut icon" href="./Pictures/Vodopadi.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ГОРНА НАВИГАЦИЈА -->
+   <header>
+  <div class="nav-container">
+    <a href="#" class="logo">
+      <img src="./Pictures/Opstina.png" alt="Logo" class="logo-img" />
+    </a>
+    
+    <!-- Mobilno kopče za navigacija -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#proces">Process</a></li>
+      <li><a href="#sredeni">Resolved Issues</a></li>
+      <li><a href="prijavi.html" class="btn-nav">✍️ Report an Issue</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO СЕКЦИЈА -->
+<section class="hero-section">
+  <!-- Temen sloj preku slikata za bleda pozadina -->
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Together for a Better Vodopadi</h1>
+      <p class="hero-subtitle">
+        Report an issue, track its progress, and vote on improvements in
+        your community.
+      </p>
+      <div class="hero-actions">
+        <a href="prijavi.html">
+          <button class="btn btn-primary" id="btn-hero-report">
+            <i class="fa-solid fa-plus-circle"></i> Report an Issue
+          </button>
+        </a>
+        <a
+          href="prijavi.html"
+          class="btn btn-outline"
+        >
+          View All Issues
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!--How many problems are solved-->
+    <section class="stats-banner-section">
+      <div class="stats-banner-container">
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div class="stat-box-number" id="stat-total">0</div>
+          <div class="stat-box-label">Total Issues</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fa-solid fa-spinner"></i>
+          </div>
+          <div class="stat-box-number" id="stat-progress">0</div>
+          <div class="stat-box-label">In Progress</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="stat-box-number" id="stat-resolved">0</div>
+          <div class="stat-box-label">Resolved</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div class="stat-box-number">24h</div>
+          <div class="stat-box-label">Avg. Reaction</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works-section" id="proces">
+      <div class="how-it-works-container">
+        <div class="section-title">
+          <h2>How It Works</h2>
+          <p>Report a municipal issue in just 3 simple steps</p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Cekor 1 -->
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">
+              <i class="fa-brands fa-google"></i>
+            </div>
+            <h3>Sign In</h3>
+            <p>
+              Log in using your Google account to verify your report securely.
+            </p>
+          </div>
+
+          <!-- Cekor 2 -->
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <h3>Fill Details</h3>
+            <p>
+              Choose a category, describe the issue, and attach a photo if
+              available.
+            </p>
+          </div>
+
+          <!-- Cekor 3 -->
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <h3>Submit & Track</h3>
+            <p>
+              Send your report directly to the municipality and monitor its
+              progress.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sredeni" class="resolved-section">
+      <div class="resolved-header">
+        <h2>Resolved Issues</h2>
+        <p>See some of the latest issues fixed in our municipality</p>
+      </div>
+
+      <div class="slider-container">
+        <div class="slider-track">
+          <!-- Картичка 1 -->
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400"
+              alt="Pothole Fixed"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Pothole Fixed</h3>
+              <p>Main Street / Center</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Картичка 2 -->
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=400"
+              alt="Street Light Repaired"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Street Light Repaired</h3>
+              <p>Park Neighborhood</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Картичка 3 -->
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400"
+              alt="Trash Cleaned"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Trash Cleaned</h3>
+              <p>River Quay</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Картичка 4 -->
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=400"
+              alt="Traffic Sign Replaced"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Traffic Sign Replaced</h3>
+              <p>School Zone</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- ДУПЛИРАНИ КАРТИЧКИ (за бесконечна анимација) -->
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400"
+              alt="Pothole Fixed"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Pothole Fixed</h3>
+              <p>Main Street / Center</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=400"
+              alt="Street Light Repaired"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Street Light Repaired</h3>
+              <p>Park Neighborhood</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400"
+              alt="Trash Cleaned"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Trash Cleaned</h3>
+              <p>River Quay</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="resolved-card">
+            <img
+              src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=400"
+              alt="Traffic Sign Replaced"
+              class="card-img"
+            />
+            <div class="card-body">
+              <span class="badge">Resolved</span>
+              <h3>Traffic Sign Replaced</h3>
+              <p>School Zone</p>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="before-after-section">
+      <div class="before-after-header">
+        <h2>Before & After Transformation</h2>
+        <p>Drag the slider to see how we fix issues in our municipality</p>
+      </div>
+
+      <div class="ba-slider">
+        <!-- Слика "ПОТОА" (Решено / Убавото) - стои во позадина -->
+        <img src="./Pictures/Street.png" alt="After Fixed" class="ba-img img-after" />
+
+        <!-- Слика "ПРЕД" (Проблем / Неубавото) - стои одозгора со исечок -->
+        <div class="img-before-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=1000&auto=format&fit=crop"
+            alt="Before Problem"
+            class="ba-img img-before"
+          />
+        </div>
+
+        <!-- Разделувачка линија со стрелки за влечење -->
+        <div class="ba-handle">
+          <div class="handle-line"></div>
+          <div class="handle-circle">
+            <i class="fa-solid fa-arrows-left-right"></i>
+          </div>
+        </div>
+
+        <!-- Инпут за влечење -->
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          class="ba-range"
+          id="ba-range-input"
+        />
+      </div>
+    </section>
+
+    <script src="./JS/main.js"></script>
+      
+   
+  </body>
+</html>
