@@ -249,6 +249,43 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
         }
       };
 
+      // IMAGE UPLOAD (компјутер / галерија / камера)
+      function fileToCompressedDataURL(file, maxSize = 900, quality = 0.7) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          const url = URL.createObjectURL(file);
+          img.onload = () => {
+            const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+            const w = Math.round(img.width * scale);
+            const h = Math.round(img.height * scale);
+            const canvas = document.createElement("canvas");
+            canvas.width = w;
+            canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            URL.revokeObjectURL(url);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Invalid image"));
+          };
+          img.src = url;
+        });
+      }
+
+      const imageInput = document.getElementById("issue-image-input");
+      const imagePreview = document.getElementById("image-preview");
+
+      imageInput.addEventListener("change", () => {
+        const file = imageInput.files[0];
+        if (file) {
+          imagePreview.src = URL.createObjectURL(file);
+          imagePreview.style.display = "block";
+        } else {
+          imagePreview.style.display = "none";
+        }
+      });
+
       // CREATE NEW ISSUE
       document
         .getElementById("form-create-issue")
@@ -268,25 +305,41 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
           const location = document.getElementById(
             "issue-location-input",
           ).value;
-          const imageUrl = document.getElementById("issue-image-input").value;
+          const file = imageInput.files[0];
           const description = document.getElementById("issue-desc-input").value;
 
-          await addDoc(collection(db, "issues"), {
-            title,
-            category,
-            location,
-            imageUrl,
-            description,
-            status: "new",
-            votes: [currentUser.uid],
-            createdAt: serverTimestamp(),
-            userId: currentUser.uid,
-            userName: currentUser.displayName || "Anonymous",
-            userPhoto: currentUser.photoURL || "",
-          });
+          const submitBtn = document.getElementById("btn-submit-issue");
+          submitBtn.disabled = true;
 
-          closeModals();
-          document.getElementById("form-create-issue").reset();
+          try {
+            let imageUrl = "";
+            if (file) {
+              imageUrl = await fileToCompressedDataURL(file);
+            }
+
+            await addDoc(collection(db, "issues"), {
+              title,
+              category,
+              location,
+              imageUrl,
+              description,
+              status: "new",
+              votes: [currentUser.uid],
+              createdAt: serverTimestamp(),
+              userId: currentUser.uid,
+              userName: currentUser.displayName || "Anonymous",
+              userPhoto: currentUser.photoURL || "",
+            });
+
+            closeModals();
+            document.getElementById("form-create-issue").reset();
+            imagePreview.style.display = "none";
+          } catch (err) {
+            console.error(err);
+            alert("Не успеа испраќањето. Обиди се повторно.");
+          } finally {
+            submitBtn.disabled = false;
+          }
         });
 
       // DETAIL MODAL
@@ -415,3 +468,48 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
             })[m],
         );
       }
+
+      // ZOOM НА СЛИКА (клик за цела слика)
+const zoomStyle = document.createElement("style");
+zoomStyle.textContent = `
+  .issue-image-preview,
+  #modal-detail-body img[alt="Attached image"] { cursor: zoom-in; }
+  #image-lightbox {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0, 0, 0, 0.9);
+    display: none; align-items: center; justify-content: center;
+    padding: 1rem; cursor: zoom-out;
+  }
+  #image-lightbox.active { display: flex; }
+  #image-lightbox img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain; border-radius: 8px;
+  }
+  #image-lightbox .lightbox-close {
+    position: absolute; top: 1rem; right: 1.25rem;
+    color: #fff; font-size: 2rem; line-height: 1;
+  }
+`;
+document.head.appendChild(zoomStyle);
+
+const lightbox = document.createElement("div");
+lightbox.id = "image-lightbox";
+lightbox.innerHTML = `<span class="lightbox-close">&times;</span><img alt="Full image" />`;
+document.body.appendChild(lightbox);
+const lightboxImg = lightbox.querySelector("img");
+
+document.addEventListener("click", (e) => {
+  const img = e.target.closest(
+    '.issue-image-preview, #modal-detail-body img[alt="Attached image"]',
+  );
+  if (img) {
+    lightboxImg.src = img.src;
+    lightbox.classList.add("active");
+  }
+});
+
+lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") lightbox.classList.remove("active");
+});
